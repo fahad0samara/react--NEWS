@@ -2,7 +2,9 @@
 import { useContext } from "react";
 import { themeContext } from "./Context";
 import './index.css'
-import { Home } from "./page/Home";
+
+import HomeNavserch from "./page/HomeNavserch";
+import HomForNews from "./page/HomForNews";
 import Navbar from "./page/Navbar";
 
 function App() {
@@ -18,7 +20,10 @@ function App() {
       }}
     >
       <Navbar />
-      <Home/>
+      <HomeNavserch />
+      <HomForNews/>
+  
+  
       
     </div>
   );
