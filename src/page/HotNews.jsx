@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import { UilClockTwo } from '@iconscout/react-unicons'
-import { UilEdit } from '@iconscout/react-unicons'
+
 // Import Swiper React components
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Autoplay, Pagination, Navigation} from "swiper";
@@ -10,83 +9,88 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 const HotNews = () => {
+  const Datacat = (str, num) => {
+    if (str.length > num) {
+      return str.substring(0, num) + "...";
+    }
+    return str;
+  }
   const [data, setdata] = useState();
 
   useEffect(() => {
-    const check = localStorage.getItem("data");
+    const check = localStorage.getItem("data2");
     if (check) {
       setdata(JSON.parse(check));
     } else {
       const options = {
         method: "GET",
-        url: "https://culture-news-web-scrapper.p.rapidapi.com/news",
+      
+        url: 'https://free-news.p.rapidapi.com/v1/search',
+        params: { q: 'BUSINESS', lang: 'en' },
         headers: {
-          "X-RapidAPI-Host": "culture-news-web-scrapper.p.rapidapi.com",
-          "X-RapidAPI-Key":
-            "cd17455652msha65012a068ec406p1438aejsn0ecf90d0b504",
-        },
+          'X-RapidAPI-Host': 'free-news.p.rapidapi.com',
+          'X-RapidAPI-Key': 'cd17455652msha65012a068ec406p1438aejsn0ecf90d0b504'
+        }
       };
 
-      axios
-        .request(options)
-        .then(function (response) {
-        
-          setdata(response.data);
-         
-        })
-        .catch(function (error) {
-         
-        });
-     
+      axios.request(options).then(function (response) {
+        localStorage.setItem('data2', JSON.stringify(response.data.articles))
+
+        setdata(response.data['articles'])
+
+          ;
+
+
+        ; // save data to local storage
+      }).catch(function (error) {
+        console.error(error);
+
+      });
+
     }
   }, []);
-  // const trycat = (str, num) => {
-  //   if (str.length > num) {
-  //     return str.substring(0, num) + "...";
-  //   }
-  //   return str;
-  // };
+ 
 
   return (
     <div>
-      <div className='  flex items-center text-center '>
+      <div className='  flex items-center text-center  '>
 
         <h1 className=' font-black text-4xl'>HOT NEWS</h1>
         <div className=' w-52 border ml-4 border-[#ABA294] '></div>
       </div>
-      <>
+      <div className="mt-10">
         <Swiper
           spaceBetween={30}
           centeredSlides={true}
           autoplay={{
-            delay: 4000,
+            delay: 5000,
             disableOnInteraction: false,
           }}
        
-          navigation={true}
+          
           modules={[Autoplay, Pagination, Navigation]}
-          className="mySwiper"
+          classNameName="mySwiper"
         >
          
             {data && data.map((item, index) => {
               return (
                 <SwiperSlide> 
-                  <div key={index.id}>
+                  <div key={index}>
                     
-                    <a class="block" href="{item.url}">
+                    <a className="block" href="{item.url}">
                       <img
-                        class=" object-center w-full h-56 shadow-xl rounded-xl"
-                        src={item.url}
+                        className=" ml-36 object-center w-1/2 h-56 shadow-xl rounded-xl"
+                        src={item.media}
                         alt=""
                       />
-                      {item.url}
-                      <div class="p-4">
-                        <h5 class="text-xl font-bold text-gray-900">
-                          {(item.description, 200)}
+                   
+                      <div className="p-4">
+                        <h5 className="text-xl font-bold text-gray-900">
+                          {Datacat(item.title, 50)}
                         </h5>
-                        <p class="mt-2 font-black text-center m-2 ">
-                          {
-                            (item.body, 250)}
+                        <p className="mt-2 font-black text-center m-2 ">
+                          
+                            { Datacat(item.summary, 150)}
                         </p>
                       </div>
                     </a>
@@ -101,7 +105,7 @@ const HotNews = () => {
           
       
         </Swiper>
-      </>
+      </div>
     </div>
   );
 };

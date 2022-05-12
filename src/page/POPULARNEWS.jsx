@@ -2,18 +2,17 @@ import React, { useEffect, useState } from 'react'
 import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
+import Por_Home from './Por_Home'
 // Import Swiper styles
 
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import FatchData from './FatchData';
+
+
 const POPULARNEWS = () => {
     const [data, setdata] = useState();
-    const Datacat = (str, num) => {
-     if (str.length > num) {
-         return str.substring(0, num) + "...";
-   }
-    return str;
- }
+    
     useEffect(() => {
         const check = localStorage.getItem('data')
         if (check) {
@@ -52,8 +51,9 @@ const POPULARNEWS = () => {
           <h1 className=' font-black text-4xl'>POPULAR NEWS</h1>
           <div className=' w-52 border ml-4 border-[#ABA294] '></div>
           </div>
-          <di className=' mt-24'>
-              <Swiper
+         
+          <div className=' mt-10' >
+              <Swiper 
                   spaceBetween={30}
                   centeredSlides={true}
                   autoplay={{
@@ -67,17 +67,8 @@ const POPULARNEWS = () => {
               >
                   {data && data.map((item, index) => {
                       return (
-                          <SwiperSlide>
-                              <div key={index.id}></div>
-                              <a href="#" class="flex flex-col items-center rounded-lg border shadow-md md:flex-row md:max-w-xl  ">
-
-
-                                  <img class="object-cover w-full h-96 rounded-t-lg md:h-48 md:w-48 md:rounded-none md:rounded-l-lg" src={item.media} alt="" />
-                                  <div class="flex flex-col justify-between p-4 leading-normal">
-                                      <h5 class="mb-2 text-2xl font-bold tracking-tight  ">{Datacat(item.title, 50)}</h5>
-                                      <p class="mb-3 font-normal  ">{Datacat(item.summary, 50)}</p>
-                                  </div>
-                              </a>
+                          <SwiperSlide >
+                              <FatchData  key={index} item={item}/>
 
                           </SwiperSlide>
 
@@ -89,8 +80,9 @@ const POPULARNEWS = () => {
 
 
               </Swiper>
-          
-          </di>
+              <Por_Home />
+          </div>
+         
       </div>
   );
 }
