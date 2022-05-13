@@ -11,7 +11,7 @@ import FatchData from "./FatchData";
 
 const POPULARNEWS = () => {
   const [data, setdata] = useState();
-  const [error, seterror] = useState( false );
+
 
   useEffect(() => {
     const check = localStorage.getItem("data");
@@ -40,7 +40,8 @@ const POPULARNEWS = () => {
                 setdata(response.data["articles"]); // save data to local storage
             })
             .catch(function (error) {
-                console.error(error);
+              console.error(error);
+             
             });
         
       }
@@ -64,19 +65,19 @@ const POPULARNEWS = () => {
           }}
           modules={[Autoplay]}
           className={"mySwiper"}
-              >
-                  {error && <div className="text-center text-2xl">{error}</div>}
+              > 
+                
           {data &&
             data.map((item, index) => {
               return (
                 <SwiperSlide>
-                  <FatchData key={index} item={item} />
+                  <FatchData key={index.id} item={item} />
                 </SwiperSlide>
               );
             })}
         </Swiper>
       </div>
-      <span className="">
+      <span className=" hidden md:block">
         {" "}
         <POPULAR2 />
       </span>

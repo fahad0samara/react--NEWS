@@ -68,9 +68,9 @@ const HotNews = () => {
        
           
           modules={[Autoplay, Pagination, Navigation]}
-          classNameName="mySwiper"
+          className="mySwiper"
         >
-          <UilArrowCircleRight />
+        
             {data && data.map((item, index) => {
               return (
 

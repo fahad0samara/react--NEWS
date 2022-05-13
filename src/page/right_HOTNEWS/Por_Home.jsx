@@ -34,7 +34,7 @@ const Home = () => {
         .request(options)
         .then(function (response) {
           localStorage.setItem("datap", JSON.stringify(response.data.articles));
-          console.log(response.data["articles"], "ddd");
+          
           setdata(response.data["articles"]); // save data to local storage
         })
         .catch(function (error) {
@@ -45,7 +45,8 @@ const Home = () => {
 
   return (
     <div>
-      <div className="  flex items-center text-center  ">
+      
+      <div className="  flex items-center text-center   ">
         <h1 className=" font-black text-4xl">HOT NEWS</h1>
         <div className=" w-52 border ml-4 border-[#ABA294] "></div>
       </div>
@@ -55,13 +56,13 @@ const Home = () => {
             dataForDisplay.map((item, index) => {
               return (
                 <div
-                  key={index}
+                  key={index.id}
                   className=" hover:shadow-none  shadow-2xl drop-shadow-2xl"
                 >
                   <div className="">
                     {item.media ? (
                       <img
-                        className="w-full mb-8 rounded-md "
+                        className="w-full   mb-8 rounded-md "
                         src={item.media}
                         alt="text"
                       />
@@ -87,7 +88,7 @@ const Home = () => {
             })}
         </div>
         <button
-          className="bn47 ml-60   drop-shadow-2xl text-center font-black text-2xl w-40 h-20  m-10 "
+          className="bn47 md:ml-60   drop-shadow-2xl text-center font-black text-2xl w-40 h-20  m-10 "
           type="button"
           onClick={() => setExpanded(!expanded)}
         >
