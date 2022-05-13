@@ -8,7 +8,9 @@ import {Autoplay, Pagination, Navigation} from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import Pro_Hotnew from "./Pro_Hotnew";
+import FatchData from "./FatchData";
+import { UilArrowCircleRight } from "@iconscout/react-unicons";
+
 const HotNews = () => {
   const Datacat = (str, num) => {
     if (str.length > num) {
@@ -53,7 +55,7 @@ const HotNews = () => {
  
 
   return (
-    <div>
+    <div className=" mr-5">
      
       <div className="mt-10">
         <Swiper
@@ -68,30 +70,13 @@ const HotNews = () => {
           modules={[Autoplay, Pagination, Navigation]}
           classNameName="mySwiper"
         >
-         
+          <UilArrowCircleRight />
             {data && data.map((item, index) => {
               return (
+
                 <SwiperSlide> 
-                  <div key={index} className='bn47  drop-shadow-2xl font-bold'>
-                    
-                    <a className="block" href="{item.url}">
-                      <img
-                        className="  object-center w-1/2 h-1/2 object-cover shadow-xl rounded-xl"
-                        src={item.media}
-                        alt=""
-                      />
-                   
-                      <div className="p-4">
-                        <h5 className="text-xl font-bold text-gray-900">
-                          {Datacat(item.title, 50)}
-                        </h5>
-                        <p className="mt-2 font-black text-center m-2 ">
-                          
-                            { Datacat(item.summary, 150)}
-                        </p>
-                      </div>
-                    </a>
-                </div>
+                 
+                  <FatchData className=' ' key={index} item={item}/>
               </SwiperSlide>
               
               )

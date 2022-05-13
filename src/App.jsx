@@ -3,8 +3,8 @@ import { useContext } from "react";
 import { themeContext } from "./Context";
 import './index.css'
 
-import HomeNavserch from "./page/HomeNavserch";
-import HomForNews from "./page/HomForNews";
+import HomeNavserch from "./page/Home/HomeNavserch";
+import HomForNews from "./page/Home/HomForNews";
 import Navbar from "./page/Navbar";
 
 function App() {
