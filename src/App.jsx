@@ -13,7 +13,7 @@ function App() {
 
   return (
       <div
-      className="App overflow-auto touch-auto  "
+     
       style={{
         background: darkMode ? "black" : "",
         color: darkMode ? "white" : "",

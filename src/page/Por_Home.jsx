@@ -51,9 +51,15 @@ const Home = () => {
 
   return (
     <div>
+      
+      <div className='  flex items-center text-center  '>
+
+        <h1 className=' font-black text-4xl'>HOT NEWS</h1>
+        <div className=' w-52 border ml-4 border-[#ABA294] '></div>
+      </div>
           <section>
              
-              <div className=" grid   lg:grid-cols-2 gap-10 mt-14 drop-shadow-2xl ">
+              <div className=" grid mr-5   lg:grid-cols-2 gap-10 mt-14 drop-shadow-2xl ">
           
                   {dataForDisplay &&
                       dataForDisplay.map((item, index) => {
@@ -87,18 +93,20 @@ const Home = () => {
                         <p className="mt-2 text-lg ">
                                 {Datacat(item.summary, 100)}
                         </p>
-                      </div>
+                    </div>
+                   
                     </div>
              
-                        
-                );
+                      
+                        );
+                       
               })}
                   
-                  <button className="bn47 ml-60   drop-shadow-2xl text-center font-black text-2xl w-40 h-20  m-10 " type="button" onClick={() => setExpanded(!expanded)}>
-                      {expanded ? 'Show Less' : 'show More'}
-                  </button>
+                 
               </div>
-              
+        <button className="bn47 ml-60   drop-shadow-2xl text-center font-black text-2xl w-40 h-20  m-10 " type="button" onClick={() => setExpanded(!expanded)}>
+          {expanded ? 'Show Less' : 'show More'}
+        </button>
       </section>
     </div>
   );

@@ -8,6 +8,7 @@ import {Autoplay, Pagination, Navigation} from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import Pro_Hotnew from "./Pro_Hotnew";
 const HotNews = () => {
   const Datacat = (str, num) => {
     if (str.length > num) {
@@ -53,11 +54,7 @@ const HotNews = () => {
 
   return (
     <div>
-      <div className='  flex items-center text-center  '>
-
-        <h1 className=' font-black text-4xl'>HOT NEWS</h1>
-        <div className=' w-52 border ml-4 border-[#ABA294] '></div>
-      </div>
+     
       <div className="mt-10">
         <Swiper
           spaceBetween={30}
@@ -75,11 +72,11 @@ const HotNews = () => {
             {data && data.map((item, index) => {
               return (
                 <SwiperSlide> 
-                  <div key={index}>
+                  <div key={index} className='bn47  drop-shadow-2xl font-bold'>
                     
                     <a className="block" href="{item.url}">
                       <img
-                        className=" ml-36 object-center w-1/2 h-56 shadow-xl rounded-xl"
+                        className="  object-center w-1/2 h-1/2 object-cover shadow-xl rounded-xl"
                         src={item.media}
                         alt=""
                       />
@@ -106,6 +103,7 @@ const HotNews = () => {
       
         </Swiper>
       </div>
+    
     </div>
   );
 };

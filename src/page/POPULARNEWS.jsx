@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react'
 import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
-import Por_Home from './Por_Home'
+import HotNews from './HotNews'
 // Import Swiper styles
 
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import FatchData from './FatchData';
+
 
 
 const POPULARNEWS = () => {
@@ -80,9 +81,9 @@ const POPULARNEWS = () => {
 
 
               </Swiper>
-              <Por_Home />
+            
           </div>
-         
+         <HotNews/>
       </div>
   );
 }
