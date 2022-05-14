@@ -1,6 +1,7 @@
 
 import { useContext } from "react";
 import { themeContext } from "./Context";
+import Footor from "./Footor";
 import './index.css'
 
 import HomeNavserch from "./page/Home/HomeNavserch";
@@ -12,8 +13,8 @@ function App() {
   const darkMode = theme.state.darkMode;
 
   return (
-      <div
-     
+    <div
+      className="bg-[#E7D1AA] "
       style={{
         background: darkMode ? "black" : "",
         color: darkMode ? "white" : "",
@@ -21,10 +22,8 @@ function App() {
     >
       <Navbar />
       <HomeNavserch />
-      <HomForNews/>
-  
-  
-      
+      <HomForNews />
+      <Footor />
     </div>
   );
 }
